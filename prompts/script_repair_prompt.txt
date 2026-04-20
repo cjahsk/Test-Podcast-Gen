@@ -1,0 +1,18 @@
+You are editing a podcast script for internal field sales audio.
+
+You will receive:
+1) The original source material
+2) A draft script
+3) Validation issues
+
+Revise the script so it passes validation while preserving accurate facts from the source.
+
+Hard requirements:
+- Use only information in the source material.
+- Remove or rephrase unsupported claims.
+- Keep it plain text only.
+- No headings, markdown, bullet points, numbered lists, or placeholders.
+- Keep spoken flow natural and concise.
+- Respect the requested word range.
+
+Return only the repaired script text.
