@@ -11,7 +11,12 @@ It is designed for short internal training/briefing content for field sales team
 
 ## What this project does
 
-For each input file, the app:
+The app can run in two modes:
+
+1. **Single-file mode** (`--file <name>`): one input -> one script + one MP3
+2. **Combined mode** (default when multiple files are found): all inputs -> one joined script + one joined MP3
+
+For both modes, the app:
 
 1. Reads and extracts text from local documents (`.txt`, `.md`, `.pdf`, `.docx`, `.csv`)
 2. Cleans the extracted text
@@ -105,7 +110,7 @@ Put your files in the `inputs/` folder. Supported formats:
 
 ## Run the app
 
-### Process all supported files (default)
+### Process all supported files (default: creates one combined podcast)
 
 ```powershell
 python -m src.main
@@ -133,21 +138,28 @@ python -m src.main --voice alloy --min-words 140 --max-words 320
 
 ## Outputs
 
-For each input file, outputs are saved under:
+Outputs are saved under:
 
 ```text
 outputs/<timestamp>_<input-slug>/
 ```
 
+or (for combined mode):
+
+```text
+outputs/<timestamp>_batch_podcast/
+```
+
 Example files:
 
-- `source_text.txt` (cleaned extracted source)
+- `source_text.txt` (cleaned extracted source, or combined source in batch mode)
 - `podcast_script_draft.txt` (first model draft)
 - `podcast_script_repaired.txt` (only if repair was needed)
 - `podcast_script.txt` (final approved script)
 - `podcast_audio.mp3` (generated speech)
 - `metadata.json` (run details)
-- `run.log` (per-file logs)
+- `source_manifest.json` (batch mode: included/skipped input files)
+- `run.log` (run logs)
 
 ---
 
